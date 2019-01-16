@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.postgres.fields import JSONField
 import uuid
+from itertools import islice
 
 
 class StudentManager(models.Manager):
@@ -58,8 +59,7 @@ class RandomUserManager(models.Manager):
     def save_data(self, list_data):
         for user in list_data:
             setattr(user, "code", self.create_random_code())
-        for i in range(5):
-            self.bulk_create(list_data, batch_size=1000)
+        self.bulk_create(list_data)
 
 
 class RandomUser(models.Model):
