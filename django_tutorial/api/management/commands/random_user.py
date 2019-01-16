@@ -8,10 +8,10 @@ import json
 class Command(BaseCommand):
 
     def add_arguments(self, parser):
-        parser.add_argument("count", type=str)
+        parser.add_argument("count", type=int)
 
     def handle(self, *args, **options):
-        count = int(options.get("count"))
+        count = options.get("count")
         
         while(count != 0):
             if count > 5000:
