@@ -59,7 +59,7 @@ class RandomUserManager(models.Manager):
     def save_data(self, list_data):
         for user in list_data:
             setattr(user, "code", self.create_random_code())
-        self.bulk_create(list_data)
+        self.bulk_create(list_data, 1000)
 
 
 class RandomUser(models.Model):
