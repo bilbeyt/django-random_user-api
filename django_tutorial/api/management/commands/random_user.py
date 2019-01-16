@@ -12,12 +12,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         count = options.get("count")
-        
-        while(count != 0):
-            if count > 5000:
+        user_list = []
+        for i in range(count, 0, -5000):
+            if i > 5000:
                 req_count = 5000
             else:
-                req_count = count
+                req_count = i
             res = requests.get("https://randomuser.me/api/?results=" + str(req_count))
             user_infos = json.loads(res.text)["results"]
             user_list = []
@@ -33,8 +33,4 @@ class Command(BaseCommand):
                     mobile_number=mobile_number
                 )
                 user_list.append(ru)
-            count -= req_count
         RandomUser.objects.save_data(user_list)
-
-        
-        
