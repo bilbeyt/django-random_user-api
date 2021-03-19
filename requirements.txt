@@ -6,7 +6,7 @@ chardet==3.0.4
 decorator==4.3.0
 Django==2.1.5
 django-extensions==2.1.4
-djangorestframework==3.9.0
+djangorestframework==3.11.2
 idna==2.8
 ipdb==0.11
 ipython==7.2.0
